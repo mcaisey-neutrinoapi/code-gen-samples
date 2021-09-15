@@ -67,13 +67,12 @@ jobs:
   #   name: Autobuild
   #   uses: github/codeql-action/autobuild@v1
 
-  - if: matrix.language == 'java' 
-    name: Build Java
-    run: |
-        /usr/bin/env mvn clean install
-        /usr/bin/env java -jar ./target/neutrinoapi.jar
-    working-directory: ./build/java/ip-info-native
-
+    - if: matrix.language == 'java' 
+      name: Build Java
+      run: |
+          /usr/bin/env mvn clean install
+          /usr/bin/env java -jar ./target/neutrinoapi.jar
+      working-directory: ./build/java/ip-info-native
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
