@@ -68,17 +68,18 @@ jobs:
       uses: github/codeql-action/autobuild@v1
 
     - if: matrix.language == 'java'
-      - name: Build Java ip-info-native
-        run: |
-            /usr/bin/env mvn clean install
-            /usr/bin/env java -jar ./target/neutrinoapi.jar
-        working-directory: ./build/java/ip-info-native
+      name: Build Java ip-info-native
+      run: |
+          /usr/bin/env mvn clean install
+          /usr/bin/env java -jar ./target/neutrinoapi.jar
+      working-directory: ./build/java/ip-info-native
 
-      - name: Build Java bad-word-filter-apache
-        run: |
-            /usr/bin/env mvn clean install
-            /usr/bin/env java -jar ./target/neutrinoapi.jar
-        working-directory: ./build/java/bad-word-filter-apache
+    - if: matrix.language == 'java'
+      name: Build Java bad-word-filter-apache
+      run: |
+          /usr/bin/env mvn clean install
+          /usr/bin/env java -jar ./target/neutrinoapi.jar
+      working-directory: ./build/java/bad-word-filter-apache
 
     # - if: matrix.language == 'java'
     #   name: Build Java bad-word-filter-native
